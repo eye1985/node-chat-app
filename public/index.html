@@ -10,18 +10,6 @@
     </p>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            let socket = io();
-
-            socket.on('connect', () => {
-               console.log('Connected to server');
-            });
-
-            socket.on('disconnect', () => {
-                console.log('Disconneted from server');
-            });
-        });
-    </script>
+    <script src="/js/index.js"></script>
 </body>
 </html>
