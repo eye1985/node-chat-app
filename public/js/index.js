@@ -8,12 +8,20 @@ socket.on('disconnect', function() {
     console.log('Disconneted from server');
 });
 
-socket.on('newMessage', function(data){
-    console.log('New message ', data);
+socket.on('newMessage', function(message){
+    var li = $('<li></li>');
+    li.text(`${message.from} ${message.text}`);
+
+    $('#messages').append(li);
 });
 
+document.addEventListener("DOMContentLoaded", function(){
+    $("#message-form").on('submit', function(event){
+        event.preventDefault();
 
-// document.addEventListener("DOMContentLoaded", function(){
-//
-//
-// });
+        socket.emit('createMessage', {
+            from : 'User',
+            text: $('#message-form [name=message]').val()
+        }, function(){});
+    });
+});

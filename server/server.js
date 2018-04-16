@@ -25,10 +25,14 @@ io.on('connection', (socket) => {
         console.log('Client disconnect');
     });
 
-    socket.on('createMessage', message => {
-       console.log(message);
+    socket.on('createMessage', (message, callback) => {
+        console.log(message);
 
-       io.emit("newMessage", generateMessage(message.from, message.text));
+        io.emit("newMessage", generateMessage(message.from, message.text));
+
+        callback({
+            text : "This is from the server"
+        });
 
         // socket.broadcast.emit("newMessage",{
         //     from : message.from,
