@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function(){
         var messageTextBox = $('[name=message]');
 
         socket.emit('createMessage', {
-            from : 'User',
             text: $('#message-form [name=message]').val()
         }, function(){
             messageTextBox.val('');
